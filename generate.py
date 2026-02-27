@@ -5,7 +5,6 @@ from typing import TypedDict, List, Dict, Any
 from langgraph.graph import StateGraph, START, END
 from graph_utils.states import GenerateState
 
-# Define the state for LangGraph
 
 def generate_dialogues(state: GenerateState) -> Dict[str, Any]:
     """
@@ -60,7 +59,7 @@ def generate_dialogues(state: GenerateState) -> Dict[str, Any]:
     NOTE: The example above only shows 2 messages for brevity, but YOU MUST generate between 5 and 12 messages for EVERY dialogue in your final JSON.
     """
 
-    # Create the dialogue using Ollama
+    # Create the dialogues using Ollama
     response = ollama.chat(
         model='llama3.1',
         messages=[{'role': 'user', 'content': prompt}],
@@ -85,10 +84,7 @@ def save_dialogues(state: GenerateState) -> Dict[str, Any]:
     if not dialogues:
         print(dialogues)
         raise ValueError("Incorrect dialogues creation")
-
-    output_file = state.output_file
-    if not output_file:
-        output_file = "data/raw_dialogues.json"
+    output_file = state.output_file if state.output_file else "data/raw_dialogues.json" # Check if we have specific directory for saving
     
     print(f"Saving {len(dialogues)} dialogues to {output_file}...")
     
@@ -118,12 +114,11 @@ def build_workflow() -> StateGraph:
 if __name__ == "__main__":
     app = build_workflow()
     
-    # Define the initial state based on the project structure
+    # Define the initial state
     initial_state = {
-        "num_dialogues": 1
+        "num_dialogues": 5
     }
     
     # Run the graph
-    # app.get_graph().draw_mermaid_png(output_file_path="./graph_generate.png")
     result = app.invoke(initial_state)
     print("Pipeline execution finished successfully.")

@@ -136,6 +136,5 @@ if __name__ == "__main__":
         "input_file": "data/raw_dialogues.json",
     }
     
-    # app.get_graph().draw_mermaid_png(output_file_path="./graph_analyze.png")
     result = app.invoke(initial_state)
     print("Analysis pipeline execution finished successfully.")
