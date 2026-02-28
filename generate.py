@@ -60,8 +60,8 @@ def generate_dialogues(state: GenerateState) -> Dict[str, Any]:
     """
 
     # Create the dialogues using Ollama
-    response = ollama.chat(
-        model='llama3.1',
+    response = ollama.chat( # using local model here cuz i am not paying 50 bucks for API access, but in production you can easily change it to gpt-4 or something else more powerful
+        model='gemma3:12b',
         messages=[{'role': 'user', 'content': prompt}],
         format='json',
         options={'temperature': 0.3}
