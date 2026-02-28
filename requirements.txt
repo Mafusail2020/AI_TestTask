@@ -2,3 +2,5 @@ pydantic
 python-dotenv
 langgraph
 ollama
+
+aiogram
