@@ -31,8 +31,9 @@
 
 Перед запуском скриптів завантажте необхідні моделі через термінал *(Примітка: у коді використовуються моделі `gemma3:12b` та `llama3.1`, ви можете змінити на більш потужні за потреби)*:
 
-
+bash
 ```ollama run llama3.1```
+
 ```ollama run gemma3:12b```
 
 
@@ -41,12 +42,14 @@
 
 
 ```git clone https://github.com/Mafusail2020/AI_TestTask.git```
+
 ```cd AI_TestTask```
 
 Створіть та активуйте віртуальне середовище:
 
 Bash
 ```python -m venv .venv```
+
 ```source .venv/bin/activate  # Для Windows використовуйте: .venv\Scripts\activate```
 
 Встановіть залежності:
